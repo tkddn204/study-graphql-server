@@ -1,10 +1,10 @@
+import path from "path";
 import { buildSchema } from "type-graphql";
 
-export const createSchema = () => {
-  return buildSchema({
-    resolvers: [__dirname + "/../*/*.ts"],
+export const createSchema = () =>
+  buildSchema({
+    resolvers: [path.join(__dirname, "/../*/*.ts")],
     authChecker: ({ context: { req } }) => {
       return !!req.session.userId;
     }
   });
-}

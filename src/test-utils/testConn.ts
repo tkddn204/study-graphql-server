@@ -1,4 +1,5 @@
-import { createConnection } from "typeorm"
+import path from "path";
+import { createConnection } from "typeorm";
 
 export const testConn = (drop: boolean = false) => {
   return createConnection({
@@ -11,6 +12,6 @@ export const testConn = (drop: boolean = false) => {
     port: 5432,
     synchronize: drop,
     dropSchema: drop,
-    entities: [__dirname + "src/entity/*.*"]
+    entities: [path.join(__dirname, "/../entity/*.*")]
   });
 };
